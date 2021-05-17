@@ -14,8 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.quiz.Result" />
-        <activity android:name=".ui.quiz.Quiz" />
         <activity android:name=".ui.communities.CommunityProfile" />
         <activity android:name=".ui.search.Search" />
         <activity

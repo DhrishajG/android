@@ -43,7 +43,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
 
-    private TextView username, appreciation, predictor;
+    private TextView username;
     private SwipeRefreshLayout swipeRefreshLayout;
     private static final int SELECT_PICTURE = 1;
     private ArrayList<PreviewCard> mTitleData;
@@ -66,8 +66,6 @@ public class UserProfile extends AppCompatActivity {
         mDatabase = FirebaseFirestore.getInstance();
         mStorage = FirebaseStorage.getInstance().getReference();
         username = findViewById(R.id.username);
-        appreciation = findViewById(R.id.appreciation_score);
-        predictor = findViewById(R.id.predictor_score);
         imageView = findViewById(R.id.profile_image);
         mNoPosts = findViewById(R.id.no_posts);
         uid = FirebaseAuth.getInstance().getUid();
@@ -110,8 +108,6 @@ public class UserProfile extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         assert document != null;
-                        predictor.setText(Objects.requireNonNull(document.get("predictorPoints")).toString());
-                        appreciation.setText(Objects.requireNonNull(document.get("appreciationPoints")).toString());
                         username.setText(Objects.requireNonNull(document.get("firstName")).toString() + " " + Objects.requireNonNull(document.get("lastName")).toString() + "'s Profile");
                         String image = "" + document.get("image");
                         if (image.length() > 0)
